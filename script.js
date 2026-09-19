@@ -1,1 +1,42 @@
-document.querySelectorAll("a[href^="#"]").forEach(a=>a.addEventListener("click",e=>{const id=a.getAttribute("href");if(id.length>1){const el=document.querySelector(id);if(el){e.preventDefault();el.scrollIntoView({behavior:"smooth"})}}}));
+const menuToggle = document.querySelector(".menu-toggle");
+const siteMenu = document.querySelector("#site-menu");
+const toast = document.querySelector(".toast");
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+	link.addEventListener("click", (event) => {
+		const target = document.querySelector(link.getAttribute("href"));
+		if (!target) return;
+		event.preventDefault();
+		target.scrollIntoView({ behavior: "smooth" });
+		if (siteMenu) siteMenu.classList.remove("is-open");
+		if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+	});
+});
+
+menuToggle?.addEventListener("click", () => {
+	const isOpen = siteMenu.classList.toggle("is-open");
+	menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+document.querySelectorAll(".resume-trigger").forEach((button) => {
+	button.addEventListener("click", () => {
+		toast.textContent = button.dataset.resumeMessage;
+		toast.classList.add("is-visible");
+		window.clearTimeout(button.resumeToastTimer);
+		button.resumeToastTimer = window.setTimeout(() => toast.classList.remove("is-visible"), 3200);
+	});
+});
+
+const revealItems = document.querySelectorAll(".reveal");
+if ("IntersectionObserver" in window) {
+	const revealObserver = new IntersectionObserver((entries, observer) => {
+		entries.forEach((entry) => {
+			if (!entry.isIntersecting) return;
+			entry.target.classList.add("is-visible");
+			observer.unobserve(entry.target);
+		});
+	}, { threshold: 0.12 });
+	revealItems.forEach((item) => revealObserver.observe(item));
+} else {
+	revealItems.forEach((item) => item.classList.add("is-visible"));
+}
