@@ -1,4 +1,4 @@
-﻿﻿# Omkar Pinjarkar — Cloud & DevOps Portfolio
+﻿﻿## Omkar Pinjarkar — Cloud & DevOps Portfolio
 
 This repository contains my personal portfolio website, built using
 HTML, CSS, and JavaScript and hosted with GitHub Pages.
