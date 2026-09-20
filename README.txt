@@ -1,1 +1,0 @@
-OMKAR.DEV portfolio. Extract the entire folder and open index.html. Keep assets/omkar-profile.jpeg in place. All personal links are already configured.
