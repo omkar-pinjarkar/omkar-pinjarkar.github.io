@@ -101,6 +101,32 @@ footer { padding: 22px max(5vw, calc((100% - var(--max)) / 2)); display: flex; j
 .lab-grid p { margin: 9px 0; color: var(--muted); font-size: 12px; line-height: 1.65; }
 .lab-grid p b { color: var(--cyan); font: 500 10px "IBM Plex Mono", monospace; text-transform: uppercase; }
 .lab-grid small { display: block; margin-top: 18px; padding-top: 14px; color: var(--blue); border-top: 1px solid var(--line); font: 400 10px/1.6 "IBM Plex Mono", monospace; }
+.architecture-diagram { margin: 22px 0 12px; padding: 22px 16px; background: rgba(7,21,30,.82); border: 1px solid rgba(77,225,210,.3); border-radius: 4px; text-align: center; font-family: "IBM Plex Mono", monospace; }
+.diagram-node { min-width: 150px; padding: 10px 12px; display: inline-block; color: var(--ink); background: var(--panel); border: 1px solid var(--blue); border-radius: 3px; font-size: 11px; }
+.diagram-node small { color: var(--muted); font-size: 9px; }
+.diagram-arrow { display: block; margin: 5px 0; color: var(--orange); font-size: 16px; }
+.diagram-split { display: flex; justify-content: center; gap: 12px; }
+.diagram-split .diagram-node { min-width: 0; flex: 1; }
+.architecture-diagram.compact { padding: 28px 12px; }
+.diagram-flow { display: flex; align-items: center; justify-content: center; gap: 7px; color: var(--orange); }
+.diagram-flow .diagram-node { min-width: 0; padding: 8px; font-size: 9px; }
+.diagram-note { margin: 0 0 18px; color: var(--muted); font-size: 11px; line-height: 1.65; }
+.case-study { margin: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.case-study summary { padding: 13px 0; color: var(--cyan); cursor: pointer; font: 500 10px "IBM Plex Mono", monospace; list-style: none; }
+.case-study summary::-webkit-details-marker { display: none; }
+.case-study summary:before { content: "+ "; color: var(--orange); }
+.case-study[open] summary:before { content: "- "; }
+.case-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px 22px; padding: 0 0 17px; }
+.case-grid div { display: grid; gap: 5px; }
+.case-grid b { color: var(--blue); font: 500 9px "IBM Plex Mono", monospace; letter-spacing: 1px; }
+.case-grid span { color: var(--muted); font-size: 11px; line-height: 1.6; }
+.lab-grid article > p { margin-bottom: 14px; color: var(--blue); font: 500 10px "IBM Plex Mono", monospace; }
+.lab-toggle { padding: 9px 12px; color: var(--cyan); background: transparent; border: 1px solid var(--line); border-radius: 3px; cursor: pointer; font: 500 10px "IBM Plex Mono", monospace; }
+.lab-toggle:hover { border-color: var(--cyan); }
+.lab-details { margin-top: 18px; }
+.lab-details p { margin: 9px 0; color: var(--muted); font: 400 12px/1.65 "Space Grotesk", sans-serif !important; }
+.lab-details p b { color: var(--cyan); font: 500 10px "IBM Plex Mono", monospace; text-transform: uppercase; }
+.lab-details small { margin-top: 16px; }
 @media (max-width: 1050px) {
 	.stack-grid { grid-template-columns: repeat(3, 1fr); }
 	.journey-steps { grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -110,4 +136,7 @@ footer { padding: 22px max(5vw, calc((100% - var(--max)) / 2)); display: flex; j
 @media (max-width: 780px) {
 	.stack-grid, .lab-grid { grid-template-columns: 1fr; }
 	.journey-steps { grid-template-columns: repeat(2, 1fr); }
+	.diagram-flow { flex-wrap: wrap; }
+	.diagram-flow span { display: none; }
+	.case-grid { grid-template-columns: 1fr; }
 }

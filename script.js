@@ -18,6 +18,17 @@ menuToggle?.addEventListener("click", () => {
 	menuToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
+document.querySelectorAll(".lab-toggle").forEach((button) => {
+	button.addEventListener("click", () => {
+		const details = document.getElementById(button.getAttribute("aria-controls"));
+		if (!details) return;
+		const isExpanded = button.getAttribute("aria-expanded") === "true";
+		details.hidden = isExpanded;
+		button.setAttribute("aria-expanded", String(!isExpanded));
+		button.textContent = isExpanded ? "View Details" : "Hide Details";
+	});
+});
+
 document.querySelectorAll(".resume-trigger").forEach((button) => {
 	button.addEventListener("click", () => {
 		toast.textContent = button.dataset.resumeMessage;
